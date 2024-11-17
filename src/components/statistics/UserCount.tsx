@@ -21,6 +21,7 @@ const UserCount: React.FC = () => {
 					}
 				);
 				setUserCount(response.data.data.userCount);
+				setError(null); // Reset any previous error on successful fetch
 			} catch (error) {
 				setError(`Error fetching user count: , ${error}`);
 			}
@@ -50,6 +51,11 @@ const UserCount: React.FC = () => {
 
 	if (userCount === null) {
 		return <p>Loading user count...</p>;
+	}
+
+	if (error) {
+		// Display the error message if fetching fails
+		return <p className="text-red-500">{error}</p>;
 	}
 
 	return (

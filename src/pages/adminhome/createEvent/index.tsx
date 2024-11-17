@@ -176,7 +176,7 @@ const CreateEventPage: React.FC = () => {
 				<div>
 					<label>Event Type</label>
 					<p className="my-1 text-sm ">
-						*Please change the Event-Type to "Completed" if the Event is done
+						*Please change the Event-Type to Completed if the Event is done
 					</p>
 					<select
 						name="event_type"

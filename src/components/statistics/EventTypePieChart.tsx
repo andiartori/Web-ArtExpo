@@ -9,7 +9,6 @@ import {
 	Legend,
 	ChartData,
 	ChartConfiguration,
-	ChartTypeRegistry,
 } from "chart.js";
 import Cookies from "js-cookie";
 
@@ -40,6 +39,7 @@ const EventTypePieChart: React.FC = () => {
 					}
 				);
 				setEventTypeData(response.data.data);
+				setError(null); // Reset any previous error on successful fetch
 			} catch (error) {
 				setError("Failed to fetch event type counts. Please try again later."); // Set a user-friendly error message
 			} finally {
@@ -124,6 +124,11 @@ const EventTypePieChart: React.FC = () => {
 	}, [eventTypeData, loading]);
 
 	if (loading) return <p>Loading chart...</p>;
+
+	if (error) {
+		// Display the error message if fetching fails
+		return <p className="text-red-500">{error}</p>;
+	}
 
 	return (
 		<div className="w-1/2 max-w-md mx-auto">

@@ -26,7 +26,8 @@ export const useRefreshToken = async () => {
 			throw new Error("Failed to retrieve new access token");
 		}
 	} catch (error) {
-		Swal.fire("Error!", "Session expired. Please log in again.", "error").then(
+		const err = error as Error;
+		Swal.fire("Error!", "Session expired. Please log in again." + err.message).then(
 			() => {
 				window.location.href = "/auth/loginuser";
 			}

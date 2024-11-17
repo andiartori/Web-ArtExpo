@@ -30,7 +30,7 @@ const Points = () => {
               </li>
               <li className="flex items-center text-gray-700">
                 <FaUserCheck className="text-blue-500 mr-3" />
-                Only users with the "User" role can register.
+                Only users with the user role can register.
               </li>
             </ul>
           </div>

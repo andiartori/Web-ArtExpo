@@ -134,8 +134,9 @@ const EditDeleteEvents: React.FC = () => {
 			fetchEvents();
 			setIsModalOpen(false); // Close modal after submit
 		} catch (error) {
+			const err = error as Error;
 			// console.error("Error updating event", error);
-			Swal.fire("Error!", "Failed to update event.", "error");
+			Swal.fire("Error!", "Failed to update event." + err.message);
 		}
 	};
 

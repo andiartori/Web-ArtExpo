@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "@/utils/hooks/useAuth";
-import axios, { AxiosError } from "axios";
-import { Events, Reviews, DecodedToken } from "@/models/models";
+import axios from "axios";
+import { Events, DecodedToken } from "@/models/models";
 import debounce from "lodash.debounce";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
@@ -24,7 +24,6 @@ import Carousel from "@/components/carousel";
 import { Quicksand } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
 import { WavyBackground } from "@/components/ui/wavy-background";
-
 
 const quickSand = Quicksand({
 	weight: "400",
@@ -788,7 +787,6 @@ function homeuser() {
 							Events List
 						</h2>
 						{/* Search */}
-			
 
 						<form className="max-w-full mx-auto grid grid-cols-4 gap-2">
 							{/* Search Input */}
@@ -1002,7 +1000,7 @@ function homeuser() {
 													{bookedEvent
 														? new Date(
 																bookedEvent.event_date
-															).toLocaleDateString()
+														  ).toLocaleDateString()
 														: "N/A"}
 												</p>
 												<p className="text-black">

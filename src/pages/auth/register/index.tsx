@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Image from "next/image";
 import { Quicksand } from "next/font/google";
+import Link from "next/link";
 
 const quicksand = Quicksand({ subsets: ["latin"] });
 
@@ -159,21 +160,19 @@ function Register() {
 
 							<p className="text-sm text-bold text-black dark:text-white py-2">
 								Have an account?{" "}
-								<a
-									href="/auth/loginuser"
-									className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-								>
-									Sign in
-								</a>
+								<Link href="/auth/loginuser">
+									<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+										Sign in
+									</a>
+								</Link>
 							</p>
 							<p className="text-sm font-light text-black dark:text-white">
 								Want to go back to home?{" "}
-								<a
-									href="/"
-									className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-								>
-									Back To Home
-								</a>
+								<Link href="/">
+									<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+										Back To Home
+									</a>
+								</Link>
 							</p>
 						</form>
 					</div>

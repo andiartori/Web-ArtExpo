@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React from "react";
 import { useAuth } from "@/utils/hooks/useAuth";
-import Cookies from "js-cookie";
 import MonthlyStatisticsChart from "@/components/statistics/monthlyStatistics";
 import EventTypePieChart from "@/components/statistics/EventTypePieChart";
 import UserCount from "@/components/statistics/UserCount";

@@ -21,6 +21,7 @@ const TotalPaidAmountDisplay: React.FC = () => {
 					}
 				);
 				setTotalPaidAmount(response.data.data.totalPaidAmount);
+				setError(null); // Reset any previous error on successful fetch
 			} catch (error) {
 				setError(`Error fetching total paid amount: ${error}`);
 			}
@@ -51,6 +52,11 @@ const TotalPaidAmountDisplay: React.FC = () => {
 
 	if (totalPaidAmount === null) {
 		return <p>Loading total paid amount...</p>;
+	}
+
+	if (error) {
+		// Display the error message if fetching fails
+		return <p className="text-red-500">{error}</p>;
 	}
 
 	return (

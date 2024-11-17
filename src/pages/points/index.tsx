@@ -2,7 +2,7 @@ import React from "react";
 import Points from "@/components/Points";
 import { useRouter } from "next/router";
 
-function points() {
+function PointsPage() {
 	const router = useRouter();
 	function toHome() {
 		router.push({ pathname: "/" });
@@ -31,4 +31,4 @@ function points() {
 	);
 }
 
-export default points;
+export default PointsPage;
