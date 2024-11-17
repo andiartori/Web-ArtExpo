@@ -23,7 +23,7 @@ interface Event {
 	discounted_price: number;
 }
 
-interface Booking {
+export interface Booking {
 	booking_id: number;
 	userId: number;
 	eventId: number;
@@ -35,7 +35,7 @@ interface Booking {
 	event: Event;
 }
 
-interface UserProfile {
+export interface UserProfile {
 	user_id: number; // Changed to string for compatibility with reviewData
 	userId: string;
 	username: string;

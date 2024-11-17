@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "@/utils/hooks/useAuth";
 import axios from "axios";
 import { Events, DecodedToken } from "@/models/models";
+import { UserProfile, Booking } from "@/models/models2";
 import debounce from "lodash.debounce";
 import Cookies from "js-cookie";
 import Swal from "sweetalert2";
@@ -160,6 +161,13 @@ function Homeuser() {
 				setNoResults(true);
 			}
 		} catch (error) {
+			const err = error as Error;
+			Swal.fire(
+				"Error!",
+				err.message || "An error occurred while booking the event.",
+				"error"
+			);
+
 			setNoResults(true);
 		}
 	}

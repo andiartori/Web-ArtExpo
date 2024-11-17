@@ -64,6 +64,8 @@ const LoginUser: React.FC = () => {
 			} else if (role === "admin") {
 				toHomeAdmin();
 			}
+
+			setError("Something went wrong on loginuser index");
 		} catch (error) {
 			const err = error as Error;
 			Swal.fire({
