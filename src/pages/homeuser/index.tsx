@@ -220,10 +220,12 @@ function Homeuser() {
 					// Fetch all booked events for the user
 					await fetchAllBookedEvents(userId);
 				} catch (error) {
+					const err = error as Error;
 					Swal.fire({
 						icon: "error",
 						title: "Failed to load user data",
-						text: "Unable to retrieve user information. please login",
+						text:
+							"Unable to retrieve user information. please login" + err.message,
 						confirmButtonText: "OK",
 					});
 					router.push("/auth/loginuser"); // Redirect to login page if error fetching user data
