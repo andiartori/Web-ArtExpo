@@ -50,8 +50,10 @@ const MonthlyStatisticsChart: React.FC = () => {
 					},
 				});
 				setMonthlyStatistics(response.data.data);
+				setError(null);
 			} catch (error) {
-				setError("Error fetching monthly statistics");
+				const err = error as Error;
+				setError("Error fetching monthly statistics" + err.message);
 			}
 		};
 
@@ -144,7 +146,13 @@ const MonthlyStatisticsChart: React.FC = () => {
 		};
 	}, [monthlyStatistics]);
 
-	return <canvas ref={chartRef}></canvas>;
+	return (
+		<div>
+			{/* Render error message if there's an error */}
+			{error && <p className="text-red-500">{error}</p>}
+			<canvas ref={chartRef}></canvas>
+		</div>
+	);
 };
 
 export default MonthlyStatisticsChart;

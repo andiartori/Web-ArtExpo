@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 import debounce from "lodash.debounce";
 import { Events, Reviews } from "@/models/models";
 import Aos from "aos";
@@ -90,6 +90,7 @@ function Home() {
 				setNoResults(true);
 			}
 		} catch (error) {
+			console.error("Error fetching events:", error);
 			setNoResults(true);
 		}
 	}
@@ -131,6 +132,7 @@ function Home() {
 				console.error("Unexpected data format:", response.data);
 			}
 		} catch (error) {
+			console.error("Error fetching reviews", error);
 			setHasMoreReviews(false);
 		}
 	}

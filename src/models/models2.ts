@@ -47,10 +47,10 @@ interface UserProfile {
 }
 
 // Review data interface (new type)
-interface ReviewData {
-	userId: number;
-	paymentId: number;
-	reviewText: string;
-	rating: number;
-	eventId: number;
-}
+// interface ReviewData {
+// 	userId: number;
+// 	paymentId: number;
+// 	reviewText: string;
+// 	rating: number;
+// 	eventId: number;
+// }

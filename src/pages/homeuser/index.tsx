@@ -36,7 +36,7 @@ const greatVibes = Great_Vibes({
 	subsets: ["latin"],
 });
 
-function homeuser() {
+function Homeuser() {
 	useAuth();
 	const router = useRouter();
 	const [events, setEvents] = useState<Events[]>([]);
@@ -446,10 +446,6 @@ function homeuser() {
 		// Proceed with deletion only if the user confirms
 		if (result.isConfirmed) {
 			try {
-				// Decode the token to verify the user
-				const decodedToken = jwtDecode<DecodedToken>(accessToken);
-				const userId = decodedToken.user; // Assuming this is the user ID
-
 				// Make the DELETE request to the API with booking_id
 				const response = await axios.delete(
 					`/api/user/book-event/${booking_id}`,
@@ -603,7 +599,7 @@ function homeuser() {
 				rating: reviewData.rating,
 				eventId: reviewData.eventId,
 			});
-			const response = await axios.post(
+			await axios.post(
 				"http://localhost:8000/api/user/review",
 				{
 					userId, // Convert back to number
@@ -1161,4 +1157,4 @@ function homeuser() {
 	);
 }
 
-export default homeuser;
+export default Homeuser;

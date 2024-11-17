@@ -41,7 +41,10 @@ const EventTypePieChart: React.FC = () => {
 				setEventTypeData(response.data.data);
 				setError(null); // Reset any previous error on successful fetch
 			} catch (error) {
-				setError("Failed to fetch event type counts. Please try again later."); // Set a user-friendly error message
+				const err = error as Error;
+				setError(
+					"Failed to fetch event type counts. Please try again later." + err
+				); // Set a user-friendly error message
 			} finally {
 				setLoading(false);
 			}
