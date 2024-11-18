@@ -80,11 +80,13 @@ const EditDeleteEvents: React.FC = () => {
 		// If the user confirms, proceed with deletion
 		if (result.isConfirmed) {
 			try {
+				setIsLoading(true);
 				await axios.delete(`/api/admin/events/${event_id}`, {
 					headers: {
 						Authorization: `Bearer ${accessToken}`,
 					},
 				});
+				setIsLoading(false);
 				Swal.fire("Deleted!", "Event has been deleted.", "success");
 				fetchEvents();
 			} catch (error) {
