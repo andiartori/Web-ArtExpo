@@ -1,4 +1,3 @@
-// components/MonthlyStatisticsChart.tsx
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import { Chart, ChartConfiguration } from "chart.js";
@@ -40,6 +39,22 @@ const MonthlyStatisticsChart: React.FC = () => {
 	>([]);
 	const [error, setError] = useState<string | null>(null);
 
+	// Map month numbers to month names
+	const monthNames = [
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+	];
+
 	useEffect(() => {
 		const fetchMonthlyStatistics = async () => {
 			const accessToken = Cookies.get("access_token");
@@ -72,7 +87,8 @@ const MonthlyStatisticsChart: React.FC = () => {
 				const chartConfig: ChartConfiguration = {
 					type: "line",
 					data: {
-						labels: monthlyStatistics.map((stat) => `Month ${stat.month}`),
+						// Replace month numbers with corresponding month names
+						labels: monthlyStatistics.map((stat) => monthNames[stat.month - 1]),
 						datasets: [
 							{
 								label: "Total Amount",
