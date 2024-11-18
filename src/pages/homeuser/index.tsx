@@ -25,7 +25,7 @@ import Carousel from "@/components/carousel";
 import { Quicksand } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
 import { WavyBackground } from "@/components/ui/wavy-background";
-import Head from "next/head"
+import Head from "next/head";
 
 const quickSand = Quicksand({
 	weight: "400",
@@ -611,7 +611,7 @@ function Homeuser() {
 				eventId: reviewData.eventId,
 			});
 			await axios.post(
-				"http://localhost:8000/api/user/review",
+				"/api/user/review",
 				{
 					userId, // Convert back to number
 					paymentId, // Convert back to number
@@ -709,9 +709,7 @@ function Homeuser() {
 	return (
 		<div>
 			<Head>
-				<title>
-					Art - Expo
-				</title>
+				<title>Art - Expo</title>
 			</Head>
 			{userProfile ? (
 				<div className="bg-black">
