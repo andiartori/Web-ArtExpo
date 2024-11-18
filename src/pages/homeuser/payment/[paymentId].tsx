@@ -100,9 +100,9 @@ const PaymentDetailPage: React.FC = () => {
 
 	return (
 		<div>
-			<head>
+			<Head>
 				<title>Art Expo</title>
-			</head>
+			</Head>
 			<section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
 				<form action="#" className="mx-auto max-w-screen-xl px-4 2xl:px-0">
 					<div className="mx-auto max-w-3xl">
