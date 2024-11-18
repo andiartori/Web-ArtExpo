@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import Image from "next/image";
+import Head from "next/head";
 
 interface PaymentDetails {
 	bookingId: number;
@@ -99,6 +100,9 @@ const PaymentDetailPage: React.FC = () => {
 
 	return (
 		<div>
+			<head>
+				<title>Art Expo</title>
+			</head>
 			<section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
 				<form action="#" className="mx-auto max-w-screen-xl px-4 2xl:px-0">
 					<div className="mx-auto max-w-3xl">

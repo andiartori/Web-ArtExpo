@@ -85,106 +85,111 @@ function Register() {
 	};
 
 	return (
-		<div
-			className={`bg-gradient-to-b from-gray-900 to-gray-600 text-white bg-black dark:bg-gray-900 ${quicksand.className}`}
-		>
-			<div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
-				<div className="flex items-start">
-					<Image src="/logo.png" alt="logo" width={200} height={120} />
-				</div>
-				<div className="w-full bg-yellow-500 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-					<div className="p-6 space-y-3 md:space-y-6 sm:p-8">
-						{/* Form */}
-						<form onSubmit={submitRegister}>
-							<div className="mb-2">
-								<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-									Your e-mail
-								</label>
-								<input
-									type="email"
-									id="email"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									placeholder="youremail@example.com"
-									onChange={handleChange}
-									required
-								/>
-							</div>
+		<div>
+			<head>
+				<title>Art Expo</title>
+			</head>
+			<div
+				className={`bg-gradient-to-b from-gray-900 to-gray-600 text-white bg-black dark:bg-gray-900 ${quicksand.className}`}
+			>
+				<div className="flex flex-col items-center justify-center px-6 mx-auto md:h-screen lg:py-0">
+					<div className="flex items-start">
+						<Image src="/logo.png" alt="logo" width={200} height={120} />
+					</div>
+					<div className="w-full bg-yellow-500 rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+						<div className="p-6 space-y-3 md:space-y-6 sm:p-8">
+							{/* Form */}
+							<form onSubmit={submitRegister}>
+								<div className="mb-2">
+									<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+										Your e-mail
+									</label>
+									<input
+										type="email"
+										id="email"
+										className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										placeholder="youremail@example.com"
+										onChange={handleChange}
+										required
+									/>
+								</div>
 
-							<div className="mb-5">
-								<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-									Your password
-								</label>
-								<input
-									type="password"
-									id="password"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									onChange={handleChange}
-									required
-									minLength={6}
-								/>
-							</div>
+								<div className="mb-5">
+									<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+										Your password
+									</label>
+									<input
+										type="password"
+										id="password"
+										className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										onChange={handleChange}
+										required
+										minLength={6}
+									/>
+								</div>
 
-							<div className="mb-5">
-								<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-									Your username
-								</label>
-								<input
-									type="text"
-									id="username"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									onChange={handleChange}
-									required
-								/>
-							</div>
+								<div className="mb-5">
+									<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+										Your username
+									</label>
+									<input
+										type="text"
+										id="username"
+										className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										onChange={handleChange}
+										required
+									/>
+								</div>
 
-							<div className="mb-5">
-								<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-									Use Referral Code
-								</label>
-								<input
-									type="text"
-									id="referral_code"
-									className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									onChange={handleChange}
-								/>
-							</div>
+								<div className="mb-5">
+									<label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+										Use Referral Code
+									</label>
+									<input
+										type="text"
+										id="referral_code"
+										className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+										onChange={handleChange}
+									/>
+								</div>
 
-							{/* Submit Button */}
-							<button
-								type="submit"
-								className="w-full text-white bg-primary-600 bg-black hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-								disabled={isLoading}
-							>
-								{isLoading ? "Loading..." : "Submit"}
-							</button>
+								{/* Submit Button */}
+								<button
+									type="submit"
+									className="w-full text-white bg-primary-600 bg-black hover:bg-yellow-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+									disabled={isLoading}
+								>
+									{isLoading ? "Loading..." : "Submit"}
+								</button>
 
-							<p className="text-sm text-bold text-black dark:text-white py-2">
-								Have an account?{" "}
-								<Link href="/auth/loginuser">
-									<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-										Sign in
-									</a>
-								</Link>
-							</p>
-							<p className="text-sm font-light text-black dark:text-white">
-								Want to go back to home?{" "}
-								<Link href="/">
-									<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
-										Back To Home
-									</a>
-								</Link>
-							</p>
-						</form>
+								<p className="text-sm text-bold text-black dark:text-white py-2">
+									Have an account?{" "}
+									<Link href="/auth/loginuser">
+										<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+											Sign in
+										</a>
+									</Link>
+								</p>
+								<p className="text-sm font-light text-black dark:text-white">
+									Want to go back to home?{" "}
+									<Link href="/">
+										<a className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+											Back To Home
+										</a>
+									</Link>
+								</p>
+							</form>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			{/* Loading Spinner */}
-			{isLoading && (
-				<div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
-					<div className="spinner-border text-white animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-900"></div>
-				</div>
-			)}
+				{/* Loading Spinner */}
+				{isLoading && (
+					<div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
+						<div className="spinner-border text-white animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-900"></div>
+					</div>
+				)}
+			</div>
 		</div>
 	);
 }

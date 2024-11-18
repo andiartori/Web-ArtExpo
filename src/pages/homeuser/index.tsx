@@ -25,6 +25,7 @@ import Carousel from "@/components/carousel";
 import { Quicksand } from "next/font/google";
 import { Great_Vibes } from "next/font/google";
 import { WavyBackground } from "@/components/ui/wavy-background";
+import Head from "next/head"
 
 const quickSand = Quicksand({
 	weight: "400",
@@ -707,6 +708,11 @@ function Homeuser() {
 
 	return (
 		<div>
+			<Head>
+				<title>
+					Art - Expo
+				</title>
+			</Head>
 			{userProfile ? (
 				<div className="bg-black">
 					<div className="relative text-white text-center">
@@ -836,7 +842,7 @@ function Homeuser() {
 										onChange={handleCategoryChange}
 										className="text-black block w-full p-2 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-black"
 									>
-										<option value="">All Event Types</option>
+										<option value="">ALL Event Types</option>
 										<option value="Exhibition">Exhibition</option>
 										<option value="Theater">Theater</option>
 										<option value="Festival">Festival</option>

@@ -10,6 +10,7 @@ import { Great_Vibes } from "next/font/google";
 import Image from "next/image";
 import Carousel from "@/components/carousel";
 import { WavyBackground } from "@/components/ui/wavy-background";
+import Head from "next/head"
 
 const quickSand = Quicksand({
 	weight: "400",
@@ -173,6 +174,9 @@ function Home() {
 
 	return (
 		<div>
+			<Head>
+				<title>Art Expo</title>
+			</Head>
 			<WavyBackground>
 				<div className="relative text-white text-center">
 					<div className="w-full h-screen col-span-5 row-span-3 bg-cover bg-center bg-no-repeat shadow-md text-white">
@@ -302,7 +306,7 @@ function Home() {
 								onChange={handleCategoryChange}
 								className="text-black block w-full p-2 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-black"
 							>
-								<option value="">ALl-Category</option>
+								<option value="">ALL-Category</option>
 								<option value="Exhibition">Exhibition</option>
 								<option value="Theater">Theater</option>
 								<option value="Festival">Festival</option>
@@ -390,7 +394,7 @@ function Home() {
 										onClick={() => toLoginUser()}
 										className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded-lg transition duration-300"
 									>
-										Login to Register
+										Login to Book
 									</button>
 								</div>
 							))}
@@ -410,7 +414,7 @@ function Home() {
 			</div>
 
 			{/* Review Section */}
-			<div className="col-span-5 bg-gradient-to-b from-gray-500 to-gray-700 p-5 rounded-lg shadow-md text-xl py-16">
+			<div className="col-span-5 bg-gradient-to-b from-gray-500 to-gray-700 p-5 shadow-md text-xl py-16">
 				<h2
 					className="text-4xl font-bold mb-5 text-left text-yellow-500"
 					id="review"
