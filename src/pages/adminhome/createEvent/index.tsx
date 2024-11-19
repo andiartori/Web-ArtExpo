@@ -5,8 +5,10 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { FaArrowLeft } from "react-icons/fa";
 import { EventsCreate } from "../../../models/models";
+import { useAuth } from "@/utils/hooks/useAuth";
 
 const CreateEventPage: React.FC = () => {
+	useAuth();
 	const router = useRouter();
 	const [formData, setFormData] = useState<Partial<EventsCreate>>({
 		event_name: "",
