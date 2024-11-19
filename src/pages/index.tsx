@@ -75,6 +75,7 @@ function Home() {
 	};
 
 	// Function to fetch events with pagination
+	// Function to fetch events with pagination
 	async function getEvents(page = 1) {
 		try {
 			const response = await axios.get(`/api/events?page=${page}&limit=6`);
@@ -82,7 +83,7 @@ function Home() {
 			// Ensure response.data.data is an array and handle empty response data gracefully
 			if (Array.isArray(response.data?.data)) {
 				const events = response.data.data;
-				const totalEvents = response.data.totalCount; // Assume the total count is returned by the API
+				const totalEvents = response.data.totalCount; // Total count of all available events
 
 				if (events.length > 0) {
 					if (page === 1) {
@@ -91,9 +92,12 @@ function Home() {
 						setEvents((prevEvents) => [...prevEvents, ...events]); // Append new events
 					}
 
-					// Show "Load More" if the number of events fetched is exactly 6 and we haven't reached the total events yet
-					const isLastPage = page * 6 >= totalEvents; // Check if we've reached the end of the list
-					setHasMoreEvents(!isLastPage); // If it's the last page, don't show "Load More"
+					// Calculate the number of events fetched so far
+					const totalFetched = page * 6; // Total events fetched after this request
+
+					// If we've fetched enough events that match the total count, hide "Load More"
+					const isLastPage = totalFetched >= totalEvents; // Last page if totalFetched >= totalEvents
+					setHasMoreEvents(totalFetched < totalEvents); // Only show "Load More" if more events are left
 
 					setNoResults(false); // Reset no results state when data is received
 				} else {
