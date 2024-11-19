@@ -31,7 +31,7 @@ function Home() {
 	const [selectedEventType, setSelectedEventType] = useState(""); // State for event type
 	const [currentEventPage, setCurrentEventPage] = useState(1);
 	const [currentReviewPage, setCurrentReviewPage] = useState(1);
-	const [hasMoreEvents , setHasMoreEvents] = useState(true);
+	const [hasMoreEvents, setHasMoreEvents] = useState(true);
 	const [hasMoreReviews, setHasMoreReviews] = useState(true);
 
 	// Debounced function to fetch events based on search term and category
@@ -80,41 +80,20 @@ function Home() {
 		try {
 			const response = await axios.get(`/api/events?page=${page}&limit=6`);
 
-			// Ensure response.data.data is an array and handle empty response data gracefully
 			if (Array.isArray(response.data?.data)) {
 				const events = response.data.data;
-				// const totalEvents = response.data.totalCount; // Assume the total count is returned by the API
 
 				if (events.length > 0) {
 					if (page === 1) {
-						setEvents(events); // Update with new events on first load
+						setEvents(events);
 					} else if (events.length === 0) {
 					} else {
-						setEvents((prevEvents) => [...prevEvents, ...events]); // Append new events
+						setEvents((prevEvents) => [...prevEvents, ...events]);
 					}
-
-					// Calculate if it's the last page
-					// const isLastPage = page * 6 >= totalEvents; // Check if it's the last page
-					// setHasMoreEvents(!isLastPage); // Hide "Load More" if it's the last page
-
-					// setNoResults(false); // Reset no results state when data is received
 				} else if (events.length === 0) {
 				} else {
-					// // If no events are returned, show that no events are found (only if starting from page 1)
-					// if (page === 1) {
-					// 	setEvents([]); // Clear events when starting from page 1
-					// }
-					// setHasMoreEvents(false); // No more events to load, hide "Load More" button
-					// setNoResults(true); // Show "No events found" if there are no events at all
 				}
 			} else {
-				// Handle unexpected data format or if the data is not an array
-				// console.error("Unexpected data format:", response.data);
-				// if (page === 1) {
-				// 	setEvents([]); // Clear events if unexpected format
-				// }
-				// setHasMoreEvents(false); // Hide "Load More" button for unexpected format
-				// setNoResults(true); // Show "No events found" for unexpected format
 			}
 		} catch (error) {
 			console.error("Error fetching events:", error);

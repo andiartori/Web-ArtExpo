@@ -149,27 +149,25 @@ function Homeuser() {
 	async function getEvents(page = 1) {
 		try {
 			const response = await axios.get(`/api/events?page=${page}&limit=6`);
-			if (Array.isArray(response.data.data)) {
-				if (page === 1) {
-					setEvents(response.data.data);
+
+			if (Array.isArray(response.data?.data)) {
+				const events = response.data.data;
+
+				if (events.length > 0) {
+					if (page === 1) {
+						setEvents(events);
+					} else if (events.length === 0) {
+					} else {
+						setEvents((prevEvents) => [...prevEvents, ...events]);
+					}
+				} else if (events.length === 0) {
 				} else {
-					setEvents((prevEvents) => [...prevEvents, ...response.data.data]);
 				}
-				setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
-				setNoResults(false);
 			} else {
-				console.error("Unexpected data format:", response.data);
-				setNoResults(true);
 			}
 		} catch (error) {
-			const err = error as Error;
-			Swal.fire(
-				"Error!",
-				err.message || "An error occurred while booking the event.",
-				"error"
-			);
-
-			setNoResults(true);
+			console.error("Error fetching events:", error);
+			setHasMoreEvents(false); // Set noResults to true if there's an error
 		}
 	}
 
