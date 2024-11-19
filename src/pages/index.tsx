@@ -31,7 +31,7 @@ function Home() {
 	const [selectedEventType, setSelectedEventType] = useState(""); // State for event type
 	const [currentEventPage, setCurrentEventPage] = useState(1);
 	const [currentReviewPage, setCurrentReviewPage] = useState(1);
-	const [hasMoreEvents, setHasMoreEvents] = useState(true);
+	const [hasMoreEvents] = useState(true);
 	const [hasMoreReviews, setHasMoreReviews] = useState(true);
 
 	// Debounced function to fetch events based on search term and category
@@ -109,12 +109,12 @@ function Home() {
 				}
 			} else {
 				// Handle unexpected data format or if the data is not an array
-				console.error("Unexpected data format:", response.data);
-				if (page === 1) {
-					setEvents([]); // Clear events if unexpected format
-				}
-				setHasMoreEvents(false); // Hide "Load More" button for unexpected format
-				setNoResults(true); // Show "No events found" for unexpected format
+				// console.error("Unexpected data format:", response.data);
+				// if (page === 1) {
+				// 	setEvents([]); // Clear events if unexpected format
+				// }
+				// setHasMoreEvents(false); // Hide "Load More" button for unexpected format
+				// setNoResults(true); // Show "No events found" for unexpected format
 			}
 		} catch (error) {
 			console.error("Error fetching events:", error);
