@@ -71,7 +71,7 @@ const LoginUser: React.FC = () => {
 			const err = error as Error;
 			Swal.fire({
 				icon: "error",
-				title: "Login Gagal",
+				title: "Login Failed. Check Your Credentials",
 				text: err.message || "Email atau password salah.",
 			});
 		} finally {

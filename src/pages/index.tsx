@@ -10,7 +10,7 @@ import { Great_Vibes } from "next/font/google";
 import Image from "next/image";
 import Carousel from "@/components/carousel";
 import { WavyBackground } from "@/components/ui/wavy-background";
-import Head from "next/head"
+import Head from "next/head";
 
 const quickSand = Quicksand({
 	weight: "400",
@@ -326,7 +326,7 @@ function Home() {
 								<div
 									key={index}
 									data-aos="fade-up"
-									className="bg-gray-100 p-4 shadow-md flex flex-col items-center"
+									className="bg-gray-100 p-4 shadow-md flex flex-col items-center hover:scale-105 hover:shadow-xl hover:bg-gray-300"
 								>
 									{/* Bagian gambar */}
 									<div className="w-full h-56 mb-4">
