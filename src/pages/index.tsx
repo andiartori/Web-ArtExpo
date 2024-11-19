@@ -98,13 +98,14 @@ function Home() {
 					// setHasMoreEvents(!isLastPage); // Hide "Load More" if it's the last page
 
 					// setNoResults(false); // Reset no results state when data is received
+				} else if (events.length === 0) {
 				} else {
-					// If no events are returned, show that no events are found (only if starting from page 1)
-					if (page === 1) {
-						setEvents([]); // Clear events when starting from page 1
-					}
-					setHasMoreEvents(false); // No more events to load, hide "Load More" button
-					setNoResults(true); // Show "No events found" if there are no events at all
+					// // If no events are returned, show that no events are found (only if starting from page 1)
+					// if (page === 1) {
+					// 	setEvents([]); // Clear events when starting from page 1
+					// }
+					// setHasMoreEvents(false); // No more events to load, hide "Load More" button
+					// setNoResults(true); // Show "No events found" if there are no events at all
 				}
 			} else {
 				// Handle unexpected data format or if the data is not an array
