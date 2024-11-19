@@ -83,7 +83,7 @@ function Home() {
 			// Ensure response.data.data is an array and handle empty response data gracefully
 			if (Array.isArray(response.data?.data)) {
 				const events = response.data.data;
-				const totalEvents = response.data.totalCount; // Assume the total count is returned by the API
+				// const totalEvents = response.data.totalCount; // Assume the total count is returned by the API
 
 				if (events.length > 0) {
 					if (page === 1) {
