@@ -78,23 +78,96 @@ function Home() {
 	async function getEvents(page = 1) {
 		try {
 			const response = await axios.get(`/api/events?page=${page}&limit=6`);
-			if (Array.isArray(response.data.data)) {
-				if (page === 1) {
-					setEvents(response.data.data);
+
+			// Ensure response.data.data is an array and handle empty response data gracefully
+			if (Array.isArray(response.data?.data)) {
+				if (response.data.data.length > 0) {
+					if (page === 1) {
+						setEvents(response.data.data); // Update with new events
+					} else {
+						setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append events
+					}
+
+					setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
 				} else {
-					setEvents((prevEvents) => [...prevEvents, ...response.data.data]);
+					// If no events are returned, handle gracefully
+					if (page === 1) {
+						setEvents([]); // Clear events when starting from page 1
+					}
+					setHasMoreEvents(false); // No more events to load
 				}
-				setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
-				setNoResults(false);
+				setNoResults(false); // Reset no results state when data is received
 			} else {
+				// Handle unexpected data format or if the data is not an array
 				console.error("Unexpected data format:", response.data);
+				if (page === 1) {
+					setEvents([]); // Clear events if unexpected format
+				}
 				setNoResults(true);
 			}
 		} catch (error) {
 			console.error("Error fetching events:", error);
-			setNoResults(true);
+			setNoResults(true); // Set noResults to true if there's an error
 		}
 	}
+
+	// Function to fetch events with pagination
+	// async function getEvents(page = 1) {
+	// 	try {
+	// 		const response = await axios.get(`/api/events?page=${page}&limit=6`);
+
+	// 		// Ensure response.data.data is an array and handle empty response data gracefully
+	// 		if (Array.isArray(response.data?.data)) {
+	// 			if (response.data.data.length > 0) {
+	// 				if (page === 1) {
+	// 					setEvents(response.data.data); // Update with new events
+	// 				} else {
+	// 					setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append events
+	// 				}
+
+	// 				setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
+	// 			} else {
+	// 				// If no events are returned, handle gracefully
+	// 				if (page === 1) {
+	// 					setEvents([]); // Clear events when starting from page 1
+	// 				}
+	// 				setHasMoreEvents(false); // No more events to load
+	// 			}
+	// 			setNoResults(false); // Reset no results state when data is received
+	// 		} else {
+	// 			// Handle unexpected data format or if the data is not an array
+	// 			console.error("Unexpected data format:", response.data);
+	// 			if (page === 1) {
+	// 				setEvents([]); // Clear events if unexpected format
+	// 			}
+	// 			setNoResults(true);
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Error fetching events:", error);
+	// 		setNoResults(true); // Set noResults to true if there's an error
+	// 	}
+	// }
+
+	// async function getEvents(page = 1) {
+	// 	try {
+	// 		const response = await axios.get(`/api/events?page=${page}&limit=6`);
+	// 		if (Array.isArray(response.data.data)) {
+	// 			if (page === 1) {
+	// 				setEvents(response.data.data);
+	// 			} else {
+	// 				setEvents((prevEvents) => [...prevEvents, ...response.data.data]);
+	// 			}
+	// 			setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
+	// 			setNoResults(false);
+	// 		} else {
+	// 			console.error("Unexpected data format:", response.data);
+	// 			setNoResults(true);
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Error fetching events:", error);
+	// 		setNoResults(true);
+	// 	}
+	// }
 
 	async function getAllEvents() {
 		try {
