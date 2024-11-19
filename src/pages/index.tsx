@@ -88,6 +88,7 @@ function Home() {
 						setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append events
 					}
 
+					// Check if we have more events to load
 					setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
 				} else {
 					// If no events are returned, handle gracefully
@@ -96,7 +97,13 @@ function Home() {
 					}
 					setHasMoreEvents(false); // No more events to load
 				}
-				setNoResults(false); // Reset no results state when data is received
+
+				// Reset no results state when data is received, but only show "no results" if there's absolutely no data
+				if (page === 1 && response.data.data.length === 0) {
+					setNoResults(true); // Only show no results if page 1 has no data
+				} else {
+					setNoResults(false); // Reset no results when data is present
+				}
 			} else {
 				// Handle unexpected data format or if the data is not an array
 				console.error("Unexpected data format:", response.data);
