@@ -31,7 +31,7 @@ function Home() {
 	const [selectedEventType, setSelectedEventType] = useState(""); // State for event type
 	const [currentEventPage, setCurrentEventPage] = useState(1);
 	const [currentReviewPage, setCurrentReviewPage] = useState(1);
-	const [hasMoreEvents] = useState(true);
+	const [hasMoreEvents , setHasMoreEvents] = useState(true);
 	const [hasMoreReviews, setHasMoreReviews] = useState(true);
 
 	// Debounced function to fetch events based on search term and category
@@ -118,7 +118,7 @@ function Home() {
 			}
 		} catch (error) {
 			console.error("Error fetching events:", error);
-			setNoResults(true); // Set noResults to true if there's an error
+			setHasMoreEvents(false); // Set noResults to true if there's an error
 		}
 	}
 
