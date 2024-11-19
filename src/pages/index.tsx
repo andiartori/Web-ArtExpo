@@ -326,7 +326,7 @@ function Home() {
 								<div
 									key={index}
 									data-aos="fade-up"
-									className="bg-gray-100 p-4 shadow-md flex flex-col items-center hover:scale-105 hover:shadow-xl hover:bg-gray-300"
+									className="bg-gray-100 p-4 shadow-md flex flex-col items-center hover:scale-125 hover:shadow-xl hover:bg-gray-200 transition-transform transform"
 								>
 									{/* Bagian gambar */}
 									<div className="w-full h-56 mb-4">
