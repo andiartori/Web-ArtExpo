@@ -81,22 +81,27 @@ function Home() {
 
 			// Ensure response.data.data is an array and handle empty response data gracefully
 			if (Array.isArray(response.data?.data)) {
-				if (response.data.data.length > 0) {
+				const events = response.data.data;
+				const totalEvents = response.data.totalCount; // Assume the total count is returned by the API
+
+				if (events.length > 0) {
 					if (page === 1) {
-						setEvents(response.data.data); // Update with new events on first load
+						setEvents(events); // Update with new events on first load
 					} else {
-						setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append new events
+						setEvents((prevEvents) => [...prevEvents, ...events]); // Append new events
 					}
 
-					// If the number of events fetched is exactly 6, it means there's more to load
-					setHasMoreEvents(response.data.data.length === 6); // Show "Load More" if we fetched exactly 6 items
+					// Show "Load More" if the number of events fetched is exactly 6 and we haven't reached the total events yet
+					const isLastPage = page * 6 >= totalEvents; // Check if we've reached the end of the list
+					setHasMoreEvents(!isLastPage); // If it's the last page, don't show "Load More"
+
 					setNoResults(false); // Reset no results state when data is received
 				} else {
 					// If no events are returned, show that no events are found (only if starting from page 1)
 					if (page === 1) {
 						setEvents([]); // Clear events when starting from page 1
 					}
-					setHasMoreEvents(false); // No more events to load, hide "Load more" button
+					setHasMoreEvents(false); // No more events to load, hide "Load More" button
 					setNoResults(true); // Show "No events found" if there are no events at all
 				}
 			} else {
