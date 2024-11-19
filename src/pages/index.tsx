@@ -83,26 +83,21 @@ function Home() {
 			if (Array.isArray(response.data?.data)) {
 				if (response.data.data.length > 0) {
 					if (page === 1) {
-						setEvents(response.data.data); // Update with new events
+						setEvents(response.data.data); // Update with new events on first load
 					} else {
-						setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append events
+						setEvents((prevEvents) => [...prevEvents, ...response.data.data]); // Append new events
 					}
 
-					// Check if we have more events to load
-					setHasMoreEvents(response.data.data.length === 6); // If less than 6, no more data
+					// If the number of events fetched is exactly 6, it means there's more to load
+					setHasMoreEvents(response.data.data.length === 6); // Show "Load More" if we fetched exactly 6 items
+					setNoResults(false); // Reset no results state when data is received
 				} else {
-					// If no events are returned, handle gracefully
+					// If no events are returned, show that no events are found (only if starting from page 1)
 					if (page === 1) {
 						setEvents([]); // Clear events when starting from page 1
 					}
-					setHasMoreEvents(false); // No more events to load
-				}
-
-				// Reset no results state when data is received, but only show "no results" if there's absolutely no data
-				if (page === 1 && response.data.data.length === 0) {
-					setNoResults(true); // Only show no results if page 1 has no data
-				} else {
-					setNoResults(false); // Reset no results when data is present
+					setHasMoreEvents(false); // No more events to load, hide "Load more" button
+					setNoResults(true); // Show "No events found" if there are no events at all
 				}
 			} else {
 				// Handle unexpected data format or if the data is not an array
@@ -110,7 +105,8 @@ function Home() {
 				if (page === 1) {
 					setEvents([]); // Clear events if unexpected format
 				}
-				setNoResults(true);
+				setHasMoreEvents(false); // Hide "Load More" button for unexpected format
+				setNoResults(true); // Show "No events found" for unexpected format
 			}
 		} catch (error) {
 			console.error("Error fetching events:", error);
